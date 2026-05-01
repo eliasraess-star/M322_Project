@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mindtrap · Moodboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-deep: #0a0a0f;
+    --bg-card: #14141c;
+    --bg-elevated: #1c1c26;
+    --line: #2a2a38;
+    --text: #e8e8f0;
+    --text-mute: #8a8a99;
+    --amber: #ffb800;
+    --amber-glow: rgba(255, 184, 0, 0.4);
+    --blood: #d92121;
+    --teal: #00d4c8;
+    --purple: #8b5cf6;
+  }
+  body {
+    background: var(--bg-deep);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 184, 0, 0.08), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 100% 100%, rgba(139, 92, 246, 0.06), transparent 60%);
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 56px 32px 96px;
+  }
+
+  /* HEADER */
+  .header {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  h1 .sub {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-mute);
+    letter-spacing: 0;
+    margin-top: 12px;
+  }
+  .meta {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-mute);
+    letter-spacing: 0.1em;
+  }
+  .meta .row { margin-bottom: 4px; }
+  .meta strong { color: var(--text); }
+
+  /* SECTION TITLES */
+  .section { margin-bottom: 64px; }
+  .section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-headline {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  /* WIRK-WÖRTER */
+  .wirkwords {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .wirkword {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 28px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .wirkword::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--amber);
+    box-shadow: 0 0 12px var(--amber-glow);
+  }
+  .wirkword .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-mute);
+    letter-spacing: 0.2em;
+  }
+  .wirkword .word {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 8px 0 4px;
+    color: var(--text);
+  }
+  .wirkword .desc {
+    font-size: 12px;
+    color: var(--text-mute);
+  }
+
+  /* COLOR PALETTE */
+  .palette {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--line);
+  }
+  .swatch {
+    padding: 32px 20px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .swatch.large { grid-column: span 1; }
+  .swatch .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .swatch .name {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  .swatch .hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: auto;
+  }
+  .sw-bg-deep { background: #0a0a0f; color: #e8e8f0; }
+  .sw-bg-card { background: #14141c; color: #e8e8f0; }
+  .sw-amber { background: #ffb800; color: #0a0a0f; }
+  .sw-blood { background: #d92121; color: #fff; }
+  .sw-teal { background: #00d4c8; color: #0a0a0f; }
+  .sw-purple { background: #8b5cf6; color: #fff; }
+
+  /* BILDIDEEN */
+  .moodgrid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 180px;
+    gap: 16px;
+  }
+  .tile {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .tile.t1 { grid-column: span 5; grid-row: span 2; }
+  .tile.t2 { grid-column: span 4; grid-row: span 1; }
+  .tile.t3 { grid-column: span 3; grid-row: span 1; }
+  .tile.t4 { grid-column: span 4; grid-row: span 1; }
+  .tile.t5 { grid-column: span 3; grid-row: span 1; }
+  .tile.t6 { grid-column: span 6; grid-row: span 1; }
+  .tile.t7 { grid-column: span 6; grid-row: span 1; }
+  .tile-svg { width: 100%; height: 100%; display: block; }
+  .tile-label {
+    position: absolute;
+    left: 16px;
+    bottom: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text);
+    text-transform: uppercase;
+    background: rgba(10, 10, 15, 0.85);
+    padding: 4px 10px;
+    border-left: 2px solid var(--amber);
+  }
+
+  /* TYPOGRAFIE */
+  .typo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .typo-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 32px;
+  }
+  .typo-card .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .typo-display {
+    font-family: 'Cinzel', serif;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+  .typo-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: var(--text-mute);
+    line-height: 1.6;
+  }
+  .typo-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-mute);
+    margin-top: 16px;
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+  }
+
+  /* TONALITÄT (DOs / DON'Ts) */
+  .tonality {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .ton-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 28px;
+  }
+  .ton-card.do { border-left: 3px solid var(--teal); }
+  .ton-card.dont { border-left: 3px solid var(--blood); }
+  .ton-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ton-card .icon {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .ton-card.do .icon { background: var(--teal); color: var(--bg-deep); }
+  .ton-card.dont .icon { background: var(--blood); color: #fff; }
+  .ton-card ul { list-style: none; }
+  .ton-card li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    color: var(--text);
+  }
+  .ton-card li:last-child { border-bottom: none; }
+  .ton-card .quote {
+    font-family: 'Cinzel', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--text-mute);
+    margin-left: 12px;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-mute);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    h1 { font-size: 40px; }
+    .header { grid-template-columns: 1fr; }
+    .meta { text-align: left; }
+    .wirkwords { grid-template-columns: repeat(2, 1fr); }
+    .palette { grid-template-columns: 1fr 1fr; }
+    .moodgrid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+    .tile.t1, .tile.t2, .tile.t3, .tile.t4, .tile.t5, .tile.t6, .tile.t7 {
+      grid-column: span 2; grid-row: span 1;
+    }
+    .typo, .tonality { grid-template-columns: 1fr; }
+    .typo-display { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div>
+      <div class="eyebrow">Moodboard · M322 · Woche 8</div>
+      <h1>MINDTRAP
+        <span class="sub">Visuelle Richtung — Dark & Mystery für junge Köpfe (18–35)</span>
+      </h1>
+    </div>
+    <div class="meta">
+      <div class="row">PROJEKT &nbsp;<strong>Escape-Room Mindtrap</strong></div>
+      <div class="row">TEAM &nbsp;<strong>Jonathan · Jeremy · Elias · Pascal</strong></div>
+      <div class="row">DATUM &nbsp;<strong>25.04.2026</strong></div>
+      <div class="row">VERSION &nbsp;<strong>v1.0</strong></div>
+    </div>
+  </header>
+
+  <!-- WIRK-WÖRTER -->
+  <section class="section">
+    <div class="section-title">01 — Wirkung</div>
+    <h2 class="section-headline">So soll Mindtrap sich anfühlen.</h2>
+    <div class="wirkwords">
+      <div class="wirkword">
+        <div class="num">/01</div>
+        <div class="word">Spannend</div>
+        <div class="desc">Der Puls steigt, bevor man rein geht.</div>
+      </div>
+      <div class="wirkword">
+        <div class="num">/02</div>
+        <div class="word">Mysteriös</div>
+        <div class="desc">Schatten, Andeutungen, nie zu viel.</div>
+      </div>
+      <div class="wirkword">
+        <div class="num">/03</div>
+        <div class="word">Rätselhaft</div>
+        <div class="desc">Die Site selbst wirkt wie ein Puzzle.</div>
+      </div>
+      <div class="wirkword">
+        <div class="num">/04</div>
+        <div class="word">Triumphal</div>
+        <div class="desc">Wer rauskommt, fühlt sich wie ein Mastermind.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FARBPALETTE -->
+  <section class="section">
+    <div class="section-title">02 — Farbwelt</div>
+    <h2 class="section-headline">Tiefes Schwarz. Ein Funke Warnung.</h2>
+    <div class="palette">
+      <div class="swatch sw-bg-deep large">
+        <div>
+          <div class="role">Hintergrund · Primary</div>
+          <div class="name">Vault Black</div>
+        </div>
+        <div class="hex">#0A0A0F</div>
+      </div>
+      <div class="swatch sw-bg-card">
+        <div>
+          <div class="role">Surface</div>
+          <div class="name">Shadow</div>
+        </div>
+        <div class="hex">#14141C</div>
+      </div>
+      <div class="swatch sw-amber">
+        <div>
+          <div class="role">Akzent · CTA</div>
+          <div class="name">Amber Alarm</div>
+        </div>
+        <div class="hex">#FFB800</div>
+      </div>
+      <div class="swatch sw-blood">
+        <div>
+          <div class="role">Akzent · Warning</div>
+          <div class="name">Blood</div>
+        </div>
+        <div class="hex">#D92121</div>
+      </div>
+      <div class="swatch sw-teal">
+        <div>
+          <div class="role">Akzent · Erfolg</div>
+          <div class="name">Cipher Teal</div>
+        </div>
+        <div class="hex">#00D4C8</div>
+      </div>
+      <div class="swatch sw-purple">
+        <div>
+          <div class="role">Akzent · Mystik</div>
+          <div class="name">Riddle Purple</div>
+        </div>
+        <div class="hex">#8B5CF6</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BILDIDEEN -->
+  <section class="section">
+    <div class="section-title">03 — Bildwelt</div>
+    <h2 class="section-headline">Was man sehen soll.</h2>
+    <div class="moodgrid">
+
+      <!-- Tile 1: Locked door with light beam -->
+      <div class="tile t1">
+        <svg class="tile-svg" viewBox="0 0 500 380" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="beam1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffb800" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#ffb800" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1c1c26"/>
+              <stop offset="100%" stop-color="#0a0a0f"/>
+            </linearGradient>
+          </defs>
+          <rect width="500" height="380" fill="url(#bg1)"/>
+          <!-- floor planks -->
+          <g stroke="#2a2a38" stroke-width="1">
+            <line x1="0" y1="320" x2="500" y2="320"/>
+            <line x1="100" y1="320" x2="100" y2="380"/>
+            <line x1="220" y1="320" x2="220" y2="380"/>
+            <line x1="340" y1="320" x2="340" y2="380"/>
+            <line x1="440" y1="320" x2="440" y2="380"/>
+          </g>
+          <!-- door frame -->
+          <rect x="180" y="80" width="140" height="240" fill="#0a0a0f" stroke="#3a3a48" stroke-width="2"/>
+          <!-- door panels -->
+          <rect x="195" y="100" width="50" height="90" fill="none" stroke="#2a2a38" stroke-width="1"/>
+          <rect x="255" y="100" width="50" height="90" fill="none" stroke="#2a2a38" stroke-width="1"/>
+          <rect x="195" y="210" width="50" height="90" fill="none" stroke="#2a2a38" stroke-width="1"/>
+          <rect x="255" y="210" width="50" height="90" fill="none" stroke="#2a2a38" stroke-width="1"/>
+          <!-- light beam from below door -->
+          <polygon points="180,320 320,320 380,380 120,380" fill="url(#beam1)"/>
+          <!-- light strip under door -->
+          <rect x="180" y="316" width="140" height="4" fill="#ffb800"/>
+          <!-- door handle -->
+          <circle cx="295" cy="200" r="4" fill="#ffb800"/>
+          <!-- ambient glow -->
+          <circle cx="250" cy="380" r="120" fill="url(#beam1)" opacity="0.6"/>
+        </svg>
+        <div class="tile-label">Bildidee 1 · Verschlossene Tür</div>
+      </div>
+
+      <!-- Tile 2: Hourglass / clock -->
+      <div class="tile t2">
+        <svg class="tile-svg" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+          <rect width="320" height="180" fill="#14141c"/>
+          <!-- glowing circle background -->
+          <circle cx="160" cy="90" r="70" fill="none" stroke="#d92121" stroke-width="1" opacity="0.3"/>
+          <circle cx="160" cy="90" r="60" fill="none" stroke="#d92121" stroke-width="1" opacity="0.5"/>
+          <!-- hourglass -->
+          <g transform="translate(160 90)">
+            <polygon points="-30,-40 30,-40 0,0 -30,40 30,40 0,0" fill="none" stroke="#e8e8f0" stroke-width="2"/>
+            <line x1="-35" y1="-40" x2="35" y2="-40" stroke="#e8e8f0" stroke-width="3"/>
+            <line x1="-35" y1="40" x2="35" y2="40" stroke="#e8e8f0" stroke-width="3"/>
+            <!-- sand top -->
+            <polygon points="-22,-32 22,-32 0,-2" fill="#ffb800"/>
+            <!-- sand bottom -->
+            <polygon points="-15,38 15,38 0,18" fill="#ffb800"/>
+            <!-- falling sand -->
+            <line x1="0" y1="-2" x2="0" y2="18" stroke="#ffb800" stroke-width="2"/>
+          </g>
+          <!-- tick marks -->
+          <g stroke="#d92121" stroke-width="2">
+            <line x1="160" y1="10" x2="160" y2="20"/>
+            <line x1="240" y1="90" x2="230" y2="90"/>
+            <line x1="160" y1="170" x2="160" y2="160"/>
+            <line x1="80" y1="90" x2="90" y2="90"/>
+          </g>
+        </svg>
+        <div class="tile-label">Bildidee 2 · Tickende Zeit</div>
+      </div>
+
+      <!-- Tile 3: Texture -->
+      <div class="tile t3">
+        <svg class="tile-svg" viewBox="0 0 240 180" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <pattern id="brick" width="40" height="20" patternUnits="userSpaceOnUse">
+              <rect width="40" height="20" fill="#1c1c26"/>
+              <line x1="0" y1="20" x2="40" y2="20" stroke="#0a0a0f" stroke-width="1"/>
+              <line x1="20" y1="0" x2="20" y2="20" stroke="#0a0a0f" stroke-width="1"/>
+            </pattern>
+            <pattern id="brick2" width="40" height="20" patternUnits="userSpaceOnUse" x="20">
+              <rect width="40" height="20" fill="#1c1c26"/>
+              <line x1="0" y1="20" x2="40" y2="20" stroke="#0a0a0f" stroke-width="1"/>
+              <line x1="20" y1="0" x2="20" y2="20" stroke="#0a0a0f" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="240" height="90" fill="url(#brick)"/>
+          <rect y="90" width="240" height="90" fill="url(#brick2)"/>
+          <!-- moss/cracks -->
+          <path d="M 30 20 L 35 40 L 25 60 L 40 80" stroke="#00d4c8" stroke-width="1" fill="none" opacity="0.4"/>
+          <path d="M 180 100 L 175 120 L 195 140" stroke="#00d4c8" stroke-width="1" fill="none" opacity="0.4"/>
+          <!-- vignette -->
+          <radialGradient id="vig">
+            <stop offset="50%" stop-color="#000" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#000" stop-opacity="0.6"/>
+          </radialGradient>
+          <rect width="240" height="180" fill="url(#vig)"/>
+        </svg>
+        <div class="tile-label">Textur · Kerker</div>
+      </div>
+
+      <!-- Tile 4: Padlock and chain -->
+      <div class="tile t4">
+        <svg class="tile-svg" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+          <rect width="320" height="180" fill="#0a0a0f"/>
+          <!-- spotlight -->
+          <radialGradient id="spot4" cx="50%" cy="50%">
+            <stop offset="0%" stop-color="#ffb800" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#ffb800" stop-opacity="0"/>
+          </radialGradient>
+          <ellipse cx="160" cy="90" rx="120" ry="80" fill="url(#spot4)"/>
+          <!-- chain -->
+          <g stroke="#3a3a48" stroke-width="3" fill="none">
+            <ellipse cx="60" cy="90" rx="14" ry="8" transform="rotate(20 60 90)"/>
+            <ellipse cx="85" cy="90" rx="14" ry="8" transform="rotate(-20 85 90)"/>
+            <ellipse cx="110" cy="90" rx="14" ry="8" transform="rotate(20 110 90)"/>
+            <ellipse cx="210" cy="90" rx="14" ry="8" transform="rotate(-20 210 90)"/>
+            <ellipse cx="235" cy="90" rx="14" ry="8" transform="rotate(20 235 90)"/>
+            <ellipse cx="260" cy="90" rx="14" ry="8" transform="rotate(-20 260 90)"/>
+          </g>
+          <!-- padlock -->
+          <g transform="translate(160 90)">
+            <path d="M -18 -10 Q -18 -32 0 -32 Q 18 -32 18 -10" fill="none" stroke="#e8e8f0" stroke-width="4"/>
+            <rect x="-26" y="-10" width="52" height="40" rx="4" fill="#1c1c26" stroke="#e8e8f0" stroke-width="2"/>
+            <circle cx="0" cy="6" r="4" fill="#ffb800"/>
+            <line x1="0" y1="6" x2="0" y2="20" stroke="#ffb800" stroke-width="2"/>
+          </g>
+        </svg>
+        <div class="tile-label">Bildidee 3 · Schloss & Kette</div>
+      </div>
+
+      <!-- Tile 5: Cipher / Code grid -->
+      <div class="tile t5">
+        <svg class="tile-svg" viewBox="0 0 240 180" preserveAspectRatio="xMidYMid slice">
+          <rect width="240" height="180" fill="#0a0a0f"/>
+          <g font-family="JetBrains Mono, monospace" font-size="11" fill="#00d4c8" opacity="0.7">
+            <text x="14" y="24">0 1 1 0 1 0 1 1</text>
+            <text x="14" y="44" fill="#8b5cf6">A B 7 F · 2 9 C 1</text>
+            <text x="14" y="64" fill="#00d4c8">1 0 0 1 1 1 0 0</text>
+            <text x="14" y="84" fill="#ffb800" opacity="1">█ █ █ █  D E C O D E</text>
+            <text x="14" y="104" fill="#00d4c8">1 1 0 1 0 1 1 0</text>
+            <text x="14" y="124" fill="#8b5cf6">3 5 D · 8 1 A · F E</text>
+            <text x="14" y="144" fill="#00d4c8">0 1 0 1 1 0 0 1</text>
+            <text x="14" y="164" fill="#00d4c8">1 0 1 1 0 1 1 0</text>
+          </g>
+          <!-- scan line -->
+          <rect x="0" y="76" width="240" height="16" fill="#ffb800" opacity="0.08"/>
+        </svg>
+        <div class="tile-label">Stilelement · Code & Chiffre</div>
+      </div>
+
+      <!-- Tile 6: Vintage key -->
+      <div class="tile t6">
+        <svg class="tile-svg" viewBox="0 0 480 180" preserveAspectRatio="xMidYMid slice">
+          <rect width="480" height="180" fill="#14141c"/>
+          <!-- spotlight -->
+          <radialGradient id="spot6" cx="50%" cy="50%">
+            <stop offset="0%" stop-color="#ffb800" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#ffb800" stop-opacity="0"/>
+          </radialGradient>
+          <ellipse cx="240" cy="90" rx="200" ry="80" fill="url(#spot6)"/>
+          <!-- key shadow -->
+          <g transform="translate(0 12)" opacity="0.4">
+            <circle cx="120" cy="90" r="36" fill="none" stroke="#000" stroke-width="6"/>
+            <rect x="156" y="83" width="220" height="14" fill="#000"/>
+          </g>
+          <!-- key -->
+          <g>
+            <circle cx="120" cy="90" r="36" fill="none" stroke="#ffb800" stroke-width="6"/>
+            <circle cx="120" cy="90" r="14" fill="#0a0a0f" stroke="#ffb800" stroke-width="2"/>
+            <rect x="156" y="84" width="220" height="12" fill="#ffb800"/>
+            <!-- teeth -->
+            <rect x="320" y="96" width="14" height="22" fill="#ffb800"/>
+            <rect x="344" y="96" width="10" height="14" fill="#ffb800"/>
+            <rect x="364" y="96" width="12" height="22" fill="#ffb800"/>
+          </g>
+          <!-- shimmer -->
+          <line x1="160" y1="86" x2="370" y2="86" stroke="#fff" stroke-width="1" opacity="0.4"/>
+        </svg>
+        <div class="tile-label">Bildidee 4 · Antiker Schlüssel</div>
+      </div>
+
+      <!-- Tile 7: People silhouettes -->
+      <div class="tile t7">
+        <svg class="tile-svg" viewBox="0 0 480 180" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="bg7" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1c1c26"/>
+              <stop offset="100%" stop-color="#0a0a0f"/>
+            </linearGradient>
+            <radialGradient id="glow7" cx="50%" cy="40%">
+              <stop offset="0%" stop-color="#ffb800" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#ffb800" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="480" height="180" fill="url(#bg7)"/>
+          <!-- glow center -->
+          <ellipse cx="240" cy="80" rx="180" ry="70" fill="url(#glow7)"/>
+          <!-- silhouettes -->
+          <g fill="#0a0a0f">
+            <!-- left -->
+            <circle cx="100" cy="80" r="14"/>
+            <path d="M 78 100 Q 78 130 100 140 Q 122 130 122 100 L 122 180 L 78 180 Z"/>
+            <!-- center back -->
+            <circle cx="240" cy="60" r="16"/>
+            <path d="M 215 82 Q 215 120 240 130 Q 265 120 265 82 L 265 180 L 215 180 Z"/>
+            <!-- right -->
+            <circle cx="380" cy="80" r="14"/>
+            <path d="M 358 100 Q 358 130 380 140 Q 402 130 402 100 L 402 180 L 358 180 Z"/>
+            <!-- second left -->
+            <circle cx="170" cy="90" r="13"/>
+            <path d="M 150 110 Q 150 140 170 150 Q 190 140 190 110 L 190 180 L 150 180 Z"/>
+          </g>
+          <!-- floor light -->
+          <line x1="0" y1="178" x2="480" y2="178" stroke="#ffb800" stroke-width="2"/>
+        </svg>
+        <div class="tile-label">Bildidee 5 · Crew im Dunkeln</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TYPOGRAFIE -->
+  <section class="section">
+    <div class="section-title">04 — Typografie</div>
+    <h2 class="section-headline">Schwer und schlank. Wie ein Tresor.</h2>
+    <div class="typo">
+      <div class="typo-card">
+        <div class="role">Display · H1 / H2</div>
+        <div class="typo-display">SCHAFFST<br>DU ES RAUS?</div>
+        <div class="typo-meta">CINZEL · 900 · UPPERCASE · LETTER-SPACING +2%</div>
+      </div>
+      <div class="typo-card">
+        <div class="role">Body · Lauftext & UI</div>
+        <div style="font-family: 'Inter'; font-size: 22px; font-weight: 600; margin-bottom: 12px;">60 Minuten. 1 Raum. Kein Ausweg — ausser eurem Kopf.</div>
+        <div class="typo-body">Mindtrap ist das Gegenteil von Zurücklehnen. Bei uns wird gedacht, gerannt, gerätselt. Die Uhr tickt — und sie wartet nicht.</div>
+        <div class="typo-meta">INTER · 400 / 600 · LINE-HEIGHT 1.5</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TONALITÄT -->
+  <section class="section">
+    <div class="section-title">05 — Tonalität</div>
+    <h2 class="section-headline">So sprechen wir. So nicht.</h2>
+    <div class="tonality">
+      <div class="ton-card do">
+        <h3><span class="icon">✓</span> So sprechen wir</h3>
+        <ul>
+          <li>Direkt &amp; aktiv <span class="quote">„Schaffst du es raus?"</span></li>
+          <li>Auf Augenhöhe <span class="quote">„Du" statt „Sie"</span></li>
+          <li>Spannungsgeladen <span class="quote">„Die Uhr tickt."</span></li>
+          <li>Klar &amp; kurz <span class="quote">„Buche jetzt."</span></li>
+          <li>Mit Augenzwinkern <span class="quote">„Kein Popcorn-Abend."</span></li>
+        </ul>
+      </div>
+      <div class="ton-card dont">
+        <h3><span class="icon">✕</span> So nicht</h3>
+        <ul>
+          <li>Floskel-Begrüssung <span class="quote">„Herzlich willkommen"</span></li>
+          <li>Selbstbeweihräucherung <span class="quote">„Marktführer in..."</span></li>
+          <li>Werbe-Bla <span class="quote">„Einzigartiges Erlebnis"</span></li>
+          <li>Übertrieben mystisch <span class="quote">„Wagst du es..."</span></li>
+          <li>Zu lange Sätze ohne Punkt</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINZIPIEN / Regeln -->
+  <section class="section">
+    <div class="section-title">06 — Regeln fürs Moodboard</div>
+    <h2 class="section-headline">Worauf wir geachtet haben.</h2>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+      <div style="background: var(--bg-card); border: 1px solid var(--line); padding: 24px; border-top: 2px solid var(--amber);">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-mute); margin-bottom: 8px;">REGEL 01</div>
+        <div style="font-family: 'Cinzel', serif; font-size: 16px; font-weight: 700;">Einzelelemente, kein Gesamtbild.</div>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--line); padding: 24px; border-top: 2px solid var(--amber);">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-mute); margin-bottom: 8px;">REGEL 02</div>
+        <div style="font-family: 'Cinzel', serif; font-size: 16px; font-weight: 700;">Passt zu Persona &amp; Markenwerten.</div>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--line); padding: 24px; border-top: 2px solid var(--amber);">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-mute); margin-bottom: 8px;">REGEL 03</div>
+        <div style="font-family: 'Cinzel', serif; font-size: 16px; font-weight: 700;">Wenig &amp; klar — nicht überladen.</div>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--line); padding: 24px; border-top: 2px solid var(--amber);">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-mute); margin-bottom: 8px;">REGEL 04</div>
+        <div style="font-family: 'Cinzel', serif; font-size: 16px; font-weight: 700;">Geschmack ≠ Projektziel.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>MINDTRAP · MOODBOARD v1.0</div>
+    <div>M322 · WOCHE 8 · ABGABE</div>
+  </footer>
+</div>
+</body>
+</html>

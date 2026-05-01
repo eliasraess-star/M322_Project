@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mindtrap · Mini-Styleguide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-deep: #0a0a0f;
+    --bg-card: #14141c;
+    --bg-elevated: #1c1c26;
+    --line: #2a2a38;
+    --line-strong: #3a3a48;
+    --text: #e8e8f0;
+    --text-mute: #8a8a99;
+    --amber: #ffb800;
+    --blood: #d92121;
+    --teal: #00d4c8;
+    --purple: #8b5cf6;
+
+    /* spacing scale */
+    --sp-xs: 4px;
+    --sp-s: 8px;
+    --sp-m: 16px;
+    --sp-l: 32px;
+    --sp-xl: 64px;
+  }
+  body {
+    background: var(--bg-deep);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
+    background-image:
+      radial-gradient(ellipse 70% 40% at 50% -10%, rgba(255, 184, 0, 0.06), transparent 60%);
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 32px 96px;
+  }
+
+  /* HEADER */
+  .header {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 24px;
+    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 24px;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  h1 .sub {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-mute);
+    letter-spacing: 0;
+    margin-top: 12px;
+  }
+  .meta {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-mute);
+    letter-spacing: 0.1em;
+  }
+  .meta .row { margin-bottom: 4px; }
+  .meta strong { color: var(--text); }
+
+  /* SECTION */
+  .section { margin-bottom: 56px; }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+  }
+
+  /* MARKE */
+  .brand-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .brand-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--amber);
+    padding: 24px;
+  }
+  .brand-card .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-mute);
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+  }
+  .brand-card .value {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .brand-card .desc {
+    font-size: 13px;
+    color: var(--text-mute);
+    line-height: 1.5;
+  }
+
+  /* LOGO */
+  .logo-area {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 16px;
+  }
+  .logo-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    position: relative;
+  }
+  .logo-card.inverted { background: var(--text); }
+  .logo-card .corner-label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--text-mute);
+    text-transform: uppercase;
+  }
+  .logo-card.inverted .corner-label { color: #999; }
+
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-mark .icon {
+    width: 48px;
+    height: 48px;
+    border: 2px solid currentColor;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-mark .icon::before {
+    content: '';
+    width: 20px; height: 20px;
+    border: 2px solid currentColor;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg) translate(2px, -2px);
+  }
+  .logo-mark .word {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+  }
+  .logo-card.inverted .logo-mark { color: var(--bg-deep); }
+
+  /* FARBEN */
+  .colors {
+    border: 1px solid var(--line);
+    background: var(--bg-card);
+  }
+  .color-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 120px 200px 1fr;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .color-row:last-child { border-bottom: none; }
+  .color-row > * { padding: 16px 20px; }
+  .color-chip {
+    width: 80px;
+    height: 80px;
+    align-self: stretch;
+  }
+  .color-name {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .color-hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--amber);
+  }
+  .color-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-mute);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .color-usage {
+    font-size: 12px;
+    color: var(--text-mute);
+    line-height: 1.5;
+  }
+
+  /* TYPOGRAFIE */
+  .typo-table {
+    border: 1px solid var(--line);
+    background: var(--bg-card);
+  }
+  .typo-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 240px;
+    align-items: center;
+    padding: 24px 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .typo-row:last-child { border-bottom: none; }
+  .typo-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .typo-spec {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-mute);
+    text-align: right;
+  }
+  .typo-h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .typo-h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .typo-h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .typo-bodyt {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-mute);
+    line-height: 1.6;
+  }
+  .typo-small {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--teal);
+    letter-spacing: 0.1em;
+  }
+
+  /* BUTTONS */
+  .btn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .btn-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 32px;
+  }
+  .btn-card .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--amber);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--amber);
+    color: var(--bg-deep);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 16px 32px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 0 0 1px var(--amber), 0 4px 16px rgba(255, 184, 0, 0.3);
+  }
+  .btn-primary:hover { background: #ffce4d; box-shadow: 0 0 0 1px #ffce4d, 0 4px 24px rgba(255, 184, 0, 0.5); }
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line-strong);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 28px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .btn-link {
+    color: var(--amber);
+    text-decoration: none;
+    border-bottom: 1px solid var(--amber);
+    padding-bottom: 2px;
+    font-weight: 600;
+  }
+  .btn-spec {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-mute);
+    line-height: 1.6;
+  }
+
+  /* SPACING */
+  .spacing {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  .sp-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 20px;
+    text-align: center;
+  }
+  .sp-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+  }
+  .sp-bar {
+    background: var(--amber);
+    height: 8px;
+    margin: 0 auto 12px;
+  }
+  .sp-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .sp-use {
+    font-size: 11px;
+    color: var(--text-mute);
+    margin-top: 6px;
+  }
+
+  /* BILDSTIL */
+  .bildstil {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .bs-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .bs-card.do { border-left: 3px solid var(--teal); }
+  .bs-card.dont { border-left: 3px solid var(--blood); }
+  .bs-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .bs-icon {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .bs-card.do .bs-icon { background: var(--teal); color: var(--bg-deep); }
+  .bs-card.dont .bs-icon { background: var(--blood); color: #fff; }
+  .bs-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .bs-list { padding: 20px 24px; }
+  .bs-list li {
+    list-style: none;
+    padding: 6px 0;
+    font-size: 14px;
+    color: var(--text-mute);
+  }
+  .bs-list li::before {
+    content: '— ';
+    color: var(--text);
+  }
+
+  /* TONALITÄT TABLE */
+  .tone-table {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-collapse: collapse;
+    background: var(--bg-card);
+  }
+  .tone-table th, .tone-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+  }
+  .tone-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--amber);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--bg-elevated);
+  }
+  .tone-table td { font-size: 14px; }
+  .tone-table td:first-child {
+    color: var(--text-mute);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    width: 140px;
+  }
+
+  /* CTAs */
+  .ctas {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  .cta-pill {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 18px;
+    text-align: center;
+  }
+  .cta-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-mute);
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+  }
+  .cta-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* RESPONSIVE */
+  .responsive {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .res-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 24px;
+  }
+  .res-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--amber);
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+  }
+  .res-name {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .res-bp {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-mute);
+    margin-bottom: 12px;
+  }
+  .res-rules {
+    font-size: 13px;
+    color: var(--text-mute);
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-mute);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 800px) {
+    h1 { font-size: 36px; }
+    .header { grid-template-columns: 1fr; }
+    .meta { text-align: left; }
+    .brand-grid { grid-template-columns: 1fr; }
+    .logo-area { grid-template-columns: 1fr; }
+    .color-row { grid-template-columns: 80px 1fr; grid-template-rows: auto auto; }
+    .color-chip { grid-row: span 2; }
+    .color-hex, .color-role, .color-usage { grid-column: 2; }
+    .typo-row { grid-template-columns: 1fr; }
+    .typo-spec { text-align: left; }
+    .btn-grid { grid-template-columns: 1fr; }
+    .spacing { grid-template-columns: repeat(2, 1fr); }
+    .bildstil { grid-template-columns: 1fr; }
+    .ctas { grid-template-columns: 1fr 1fr; }
+    .responsive { grid-template-columns: 1fr; }
+    .typo-h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div>
+      <div class="eyebrow">Mini-Styleguide · M322 · Woche 8</div>
+      <h1>MINDTRAP
+        <span class="sub">Design-Regeln auf einer Seite — Dark &amp; Mystery System v1.0</span>
+      </h1>
+    </div>
+    <div class="meta">
+      <div class="row">PROJEKT &nbsp;<strong>Escape-Room Mindtrap</strong></div>
+      <div class="row">TEAM &nbsp;<strong>Jonathan · Jeremy · Elias · Pascal</strong></div>
+      <div class="row">DATUM &nbsp;<strong>25.04.2026</strong></div>
+    </div>
+  </header>
+
+  <!-- 1. MARKE -->
+  <section class="section">
+    <div class="section-num">01 / 08</div>
+    <h2 class="section-title">Werte &amp; Eigenschaften</h2>
+    <div class="brand-grid">
+      <div class="brand-card">
+        <div class="label">WERT 01</div>
+        <div class="value">Aktivierend</div>
+        <div class="desc">Anti-Kino-Haltung. Kein Zurücklehnen. Kopf und Körper müssen arbeiten.</div>
+      </div>
+      <div class="brand-card">
+        <div class="label">WERT 02</div>
+        <div class="value">Triumph-fokussiert</div>
+        <div class="desc">Pure Aha-Momente. Die Crew feiert sich am Ende wie Masterminds.</div>
+      </div>
+      <div class="brand-card">
+        <div class="label">WERT 03</div>
+        <div class="value">Kopf-Action-Hybrid</div>
+        <div class="desc">Mentale Höchstleistung trifft auf physischen Druck. Schnelles Denken, schnelle Reaktion.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. LOGO -->
+  <section class="section">
+    <div class="section-num">02 / 08</div>
+    <h2 class="section-title">Logo</h2>
+    <div class="logo-area">
+      <div class="logo-card">
+        <span class="corner-label">PRIMARY · DARK</span>
+        <div class="logo-mark" style="color: var(--text);">
+          <span class="icon"></span>
+          <span class="word">MINDTRAP</span>
+        </div>
+      </div>
+      <div class="logo-card inverted">
+        <span class="corner-label">INVERTED</span>
+        <div class="logo-mark" style="color: var(--bg-deep);">
+          <span class="icon"></span>
+          <span class="word">MINDTRAP</span>
+        </div>
+      </div>
+      <div class="logo-card">
+        <span class="corner-label">ACCENT</span>
+        <div class="logo-mark" style="color: var(--amber);">
+          <span class="icon"></span>
+          <span class="word">MINDTRAP</span>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top: 16px; font-size: 13px; color: var(--text-mute); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;">
+      → Mindesthöhe 32px · Schutzraum = Höhe des Schlosssymbols rundum · Niemals auf busy backgrounds
+    </p>
+  </section>
+
+  <!-- 3. FARBEN -->
+  <section class="section">
+    <div class="section-num">03 / 08</div>
+    <h2 class="section-title">Farbsystem</h2>
+    <div class="colors">
+      <div class="color-row">
+        <div class="color-chip" style="background: #0A0A0F;"></div>
+        <div>
+          <div class="color-name">Vault Black</div>
+          <div class="color-role">Hauptfarbe · Background</div>
+        </div>
+        <div class="color-hex">#0A0A0F</div>
+        <div class="color-usage">Hintergrund der gesamten Site. Keine helle Variante.</div>
+        <div></div>
+      </div>
+      <div class="color-row">
+        <div class="color-chip" style="background: #FFB800;"></div>
+        <div>
+          <div class="color-name">Amber Alarm</div>
+          <div class="color-role">Akzent 1 · CTA / Highlight</div>
+        </div>
+        <div class="color-hex">#FFB800</div>
+        <div class="color-usage">Buttons, Links, wichtige Akzente. Sparsam einsetzen.</div>
+        <div></div>
+      </div>
+      <div class="color-row">
+        <div class="color-chip" style="background: #D92121;"></div>
+        <div>
+          <div class="color-name">Blood</div>
+          <div class="color-role">Akzent 2 · Warning / Timer</div>
+        </div>
+        <div class="color-hex">#D92121</div>
+        <div class="color-usage">Countdown, Warnungen, „Jetzt oder nie"-Momente.</div>
+        <div></div>
+      </div>
+      <div class="color-row">
+        <div class="color-chip" style="background: #00D4C8;"></div>
+        <div>
+          <div class="color-name">Cipher Teal</div>
+          <div class="color-role">Akzent 3 · Erfolg / Code</div>
+        </div>
+        <div class="color-hex">#00D4C8</div>
+        <div class="color-usage">Erfolgsmeldungen, Code-Snippets, Hover-States.</div>
+        <div></div>
+      </div>
+      <div class="color-row">
+        <div class="color-chip" style="background: #14141C;"></div>
+        <div>
+          <div class="color-name">Shadow</div>
+          <div class="color-role">Surface · Cards</div>
+        </div>
+        <div class="color-hex">#14141C</div>
+        <div class="color-usage">Karten, Container, Modal-Hintergrund.</div>
+        <div></div>
+      </div>
+      <div class="color-row">
+        <div class="color-chip" style="background: #E8E8F0;"></div>
+        <div>
+          <div class="color-name">Bone</div>
+          <div class="color-role">Text · Primary</div>
+        </div>
+        <div class="color-hex">#E8E8F0</div>
+        <div class="color-usage">Lauftext, Headlines auf dunklem Grund.</div>
+        <div></div>
+      </div>
+    </div>
+    <p style="margin-top: 16px; font-size: 13px; color: var(--text-mute); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;">
+      → 1 Hauptfarbe · max. 3 Akzente gleichzeitig auf einer Seite · Kontrast min. WCAG AA (4.5:1)
+    </p>
+  </section>
+
+  <!-- 4. TYPOGRAFIE -->
+  <section class="section">
+    <div class="section-num">04 / 08</div>
+    <h2 class="section-title">Typografie</h2>
+    <div class="typo-table">
+      <div class="typo-row">
+        <div class="typo-role">H1</div>
+        <div class="typo-h1">SCHAFFST DU ES RAUS?</div>
+        <div class="typo-spec">CINZEL · 900<br>48–64 px · LH 1.0</div>
+      </div>
+      <div class="typo-row">
+        <div class="typo-role">H2</div>
+        <div class="typo-h2">60 Minuten. 1 Raum. Kein Ausweg.</div>
+        <div class="typo-spec">CINZEL · 700<br>28–36 px · LH 1.1</div>
+      </div>
+      <div class="typo-row">
+        <div class="typo-role">H3</div>
+        <div class="typo-h3">Buche jetzt deinen Slot.</div>
+        <div class="typo-spec">INTER · 600<br>20–24 px · LH 1.3</div>
+      </div>
+      <div class="typo-row">
+        <div class="typo-role">BODY</div>
+        <div class="typo-bodyt">Mindtrap ist das Gegenteil von Zurücklehnen. Bei uns wird gedacht, gerannt, gerätselt — und die Uhr wartet nicht auf euch.</div>
+        <div class="typo-spec">INTER · 400<br>16 px · LH 1.6</div>
+      </div>
+      <div class="typo-row">
+        <div class="typo-role">CODE</div>
+        <div class="typo-small">CIPHER · 0xA1B7 · DECODE_NOW</div>
+        <div class="typo-spec">JETBRAINS MONO · 700<br>12–14 px · LH 1.4</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. BUTTONS -->
+  <section class="section">
+    <div class="section-num">05 / 08</div>
+    <h2 class="section-title">Buttons &amp; Links</h2>
+    <div class="btn-grid">
+      <div class="btn-card">
+        <div class="role">PRIMARY · CTA</div>
+        <a href="#" class="btn-primary">Jetzt buchen</a>
+        <div class="btn-spec">
+          BG #FFB800 · TEXT #0A0A0F<br>
+          PADDING 16px 32px · MIN-HEIGHT 48px<br>
+          GLOW box-shadow auf hover
+        </div>
+      </div>
+      <div class="btn-card">
+        <div class="role">SECONDARY · LINK</div>
+        <a href="#" class="btn-secondary">Räume entdecken</a>
+        <span style="margin-left: 16px;"><a href="#" class="btn-link">Mehr erfahren →</a></span>
+        <div class="btn-spec">
+          OUTLINE 1px #3A3A48 · TEXT #E8E8F0<br>
+          PADDING 14px 28px · MIN-HEIGHT 48px<br>
+          LINK underline + amber color
+        </div>
+      </div>
+    </div>
+    <p style="margin-top: 16px; font-size: 13px; color: var(--text-mute); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;">
+      → Touch-Target min. 44 × 44 px · 1 Haupt-CTA pro Seite · Sekundär-Buttons deutlich weniger Gewicht
+    </p>
+  </section>
+
+  <!-- 6. SPACING -->
+  <section class="section">
+    <div class="section-num">06 / 08</div>
+    <h2 class="section-title">Abstände (Spacing)</h2>
+    <div class="spacing">
+      <div class="sp-card">
+        <div class="sp-name">XS</div>
+        <div class="sp-bar" style="width: 4px;"></div>
+        <div class="sp-val">4 px</div>
+        <div class="sp-use">Icon zu Text</div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-name">S</div>
+        <div class="sp-bar" style="width: 8px;"></div>
+        <div class="sp-val">8 px</div>
+        <div class="sp-use">Innen kompakt</div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-name">M</div>
+        <div class="sp-bar" style="width: 16px;"></div>
+        <div class="sp-val">16 px</div>
+        <div class="sp-use">Standard</div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-name">L</div>
+        <div class="sp-bar" style="width: 32px;"></div>
+        <div class="sp-val">32 px</div>
+        <div class="sp-use">Zwischen Blöcken</div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-name">XL</div>
+        <div class="sp-bar" style="width: 64px;"></div>
+        <div class="sp-val">64 px</div>
+        <div class="sp-use">Sektionen</div>
+      </div>
+    </div>
+    <p style="margin-top: 16px; font-size: 13px; color: var(--text-mute); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;">
+      → Vielfache von 8 px · Konsistente Hierarchie statt zufälliger Pixel
+    </p>
+  </section>
+
+  <!-- 7. BILDSTIL & TONALITÄT -->
+  <section class="section">
+    <div class="section-num">07 / 08</div>
+    <h2 class="section-title">Bildstil &amp; Tonalität</h2>
+
+    <h3 style="font-family: 'Cinzel', serif; font-size: 18px; margin-bottom: 16px;">Bildstil</h3>
+    <div class="bildstil" style="margin-bottom: 32px;">
+      <div class="bs-card do">
+        <div class="bs-header">
+          <span class="bs-icon">✓</span>
+          <span class="bs-title">So sehen unsere Bilder aus</span>
+        </div>
+        <ul class="bs-list">
+          <li>Dunkle Räume mit gerichtetem Licht (Spotlights)</li>
+          <li>Vintage Objekte: Schlüssel, Schlösser, Ketten, Uhren</li>
+          <li>Tiefe Schatten, harte Kontraste</li>
+          <li>Hände, Silhouetten, nie ganze Gesichter im Vordergrund</li>
+          <li>Texturen: Beton, Stein, alte Holzwände</li>
+        </ul>
+      </div>
+      <div class="bs-card dont">
+        <div class="bs-header">
+          <span class="bs-icon">✕</span>
+          <span class="bs-title">So nicht</span>
+        </div>
+        <ul class="bs-list">
+          <li>Helle, freundliche Stockfotos</li>
+          <li>Lachende Modelle in die Kamera</li>
+          <li>Bunte, fröhliche Pastell-Töne</li>
+          <li>Cliché-Geisterbahn-Optik (Gummispinnen, Plastik-Skelette)</li>
+          <li>Cartoonige Illustrationen</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-family: 'Cinzel', serif; font-size: 18px; margin-bottom: 16px;">Tonalität / Sprache</h3>
+    <table class="tone-table">
+      <thead>
+        <tr><th>Eigenschaft</th><th>So</th><th>Nicht so</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ANSPRACHE</td>
+          <td>„Du" · auf Augenhöhe</td>
+          <td>„Sie" · distanziert</td>
+        </tr>
+        <tr>
+          <td>SATZBAU</td>
+          <td>Kurz. Direkt. Aktiv.</td>
+          <td>Lange Schachtelsätze mit Floskeln</td>
+        </tr>
+        <tr>
+          <td>HALTUNG</td>
+          <td>Selbstbewusst, mit Augenzwinkern</td>
+          <td>Übertrieben mystisch („Wagst du es...")</td>
+        </tr>
+        <tr>
+          <td>STIMMUNG</td>
+          <td>Spannung &amp; Energie</td>
+          <td>Werbe-Bla &amp; Selbstlob</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 8. CTAs & RESPONSIVE -->
+  <section class="section">
+    <div class="section-num">08 / 08</div>
+    <h2 class="section-title">CTAs &amp; Responsive</h2>
+
+    <h3 style="font-family: 'Cinzel', serif; font-size: 18px; margin-bottom: 16px;">5 CTA-Vorschläge</h3>
+    <div class="ctas" style="margin-bottom: 32px;">
+      <div class="cta-pill">
+        <div class="cta-num">/01</div>
+        <div class="cta-text">Jetzt buchen</div>
+      </div>
+      <div class="cta-pill">
+        <div class="cta-num">/02</div>
+        <div class="cta-text">Slot sichern</div>
+      </div>
+      <div class="cta-pill">
+        <div class="cta-num">/03</div>
+        <div class="cta-text">Crew zusammenstellen</div>
+      </div>
+      <div class="cta-pill">
+        <div class="cta-num">/04</div>
+        <div class="cta-text">Räume entdecken</div>
+      </div>
+      <div class="cta-pill">
+        <div class="cta-num">/05</div>
+        <div class="cta-text">Schaffst du es raus?</div>
+      </div>
+    </div>
+
+    <h3 style="font-family: 'Cinzel', serif; font-size: 18px; margin-bottom: 16px;">Breakpoints</h3>
+    <div class="responsive">
+      <div class="res-card">
+        <div class="res-icon">// MOBILE</div>
+        <div class="res-name">Smartphone</div>
+        <div class="res-bp">≤ 576 px · 1 Spalte</div>
+        <div class="res-rules">Hero-Headline 32 px · CTA full-width · Nav als Burger · Padding 16 px</div>
+      </div>
+      <div class="res-card">
+        <div class="res-icon">// TABLET</div>
+        <div class="res-name">Tablet</div>
+        <div class="res-bp">577 – 1199 px · 8 Spalten</div>
+        <div class="res-rules">Hero 40 px · CTA inline · Nav sichtbar · Padding 24 px</div>
+      </div>
+      <div class="res-card">
+        <div class="res-icon">// DESKTOP</div>
+        <div class="res-name">Desktop / Monitor</div>
+        <div class="res-bp">≥ 1200 px · 12 Spalten</div>
+        <div class="res-rules">Hero 56–64 px · max-width 1280 px · Padding 32–48 px · Hover-States aktiv</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>MINDTRAP · STYLEGUIDE v1.0</div>
+    <div>M322 · WOCHE 8 · ABGABE</div>
+  </footer>
+
+</div>
+</body>
+</html>
