@@ -39,8 +39,3 @@ Der interaktive Prototyp demonstriert die praktische Umsetzung der Design-Konzep
 ## 📝 Modul
 
 Dieses Projekt wurde für das Modul M322 erstellt.
-
----
-
-**Autor**: eliasraess-star  
-**Stand**: 2026-05-01
